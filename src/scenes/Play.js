@@ -71,7 +71,15 @@ class Play extends Phaser.Scene {
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← to Menu', scoreConfig).setOrigin(0.5);
+            
+            //**** where im trying to implement the high score */
             this.gameOver = true;
+            if (this.p1Score > game.highScore){
+                console.log('score was higher than high score');
+                game.highScore = this.p1Score;
+            }
+            console.log('in the text thing:', game.highScore);
+            this.add.text(game.config.width/2, game.config.height/3, `HIGH SCORE: ${game.highScore}`, scoreConfig).setOrigin(0.5);
         }, null, this);
     }
 
@@ -138,4 +146,6 @@ class Play extends Phaser.Scene {
         
         this.sound.play('sfx_explosion');
       }
+
+
 }
