@@ -75,10 +75,8 @@ class Play extends Phaser.Scene {
             //**** where im trying to implement the high score */
             this.gameOver = true;
             if (this.p1Score > game.highScore){
-                console.log('score was higher than high score');
                 game.highScore = this.p1Score;
             }
-            console.log('in the text thing:', game.highScore);
             this.add.text(game.config.width/2, game.config.height/3, `HIGH SCORE: ${game.highScore}`, scoreConfig).setOrigin(0.5);
         }, null, this);
     }
