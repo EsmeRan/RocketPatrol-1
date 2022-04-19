@@ -16,3 +16,5 @@ let keyF, keyR, keyLEFT, keyRIGHT;
 
 // global high score variable
 game.highScore = 0;
+
+// font help from https://www.webtips.dev/webtips/phaser/custom-fonts-in-phaser3
