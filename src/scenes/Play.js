@@ -8,28 +8,33 @@ class Play extends Phaser.Scene {
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('turtle', 'assets/turtle.png')
-        this.load.image('starfield', './assets/starfield.png');
+        this.load.image('pond', './assets/pond.png');
+        this.load.image('foreground', './assets/foreground.png');
+        this.load.image('midground', './assets/midground.png');
+        this.load.image('back', './assets/back.png');
+
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
 
     create() {
-        // place tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
 
-        // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xD8BAA6).setOrigin(0, 0);
-        
+        // place background sprites
+        this.back = this.add.tileSprite(0, 0, 640, 480, 'back').setOrigin(0, 0);
+        this.midground = this.add.tileSprite(0, 0, 640, 480, 'midground').setOrigin(0, 0);
+        this.foreground = this.add.tileSprite(0, 0, 640, 480, 'foreground').setOrigin(0, 0);
+        this.pond = this.add.tileSprite(0, 0, 640, 480, 'pond').setOrigin(0, 0);
+
         // add Rocket (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
 
         // add Spaceships (x3)
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 10).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 10).setOrigin(0,0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6 + 50, borderUISize*7 + 100, 'spaceship', 0, 10).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*7 + borderPadding*6, 'spaceship', 0, 10).setOrigin(0,0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*10 + borderPadding*2, 'spaceship', 0, 10).setOrigin(0,0);
 
         // add turtle
-        this.turtle1 = new Turtle(this, 300, 300, 'turtle', 0, 40).setOrigin(0, 0);
+        this.turtle1 = new Turtle(this, 300, 250, 'turtle', 0, 40).setOrigin(0, 0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -60,7 +65,7 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 100
         }
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        this.scoreLeft = this.add.text(500, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
 
         // GAME OVER flag
         this.gameOver = false;
@@ -90,7 +95,10 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
-        this.starfield.tilePositionX -= 4;  // update tile sprite
+        this.back.tilePositionX -= 2;  // update tile sprite
+        this.midground.tilePositionX -= 2.5;  
+        this.foreground.tilePositionX -= 3;  
+        this.pond.tilePositionX -= 3.5;  
 
         if(!this.gameOver) {
             this.p1Rocket.update();             // update p1

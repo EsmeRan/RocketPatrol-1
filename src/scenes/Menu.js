@@ -15,8 +15,8 @@ class Menu extends Phaser.Scene {
         let menuConfig = {
             fontFamily: 'Bungee-Regular',
             fontSize: '28px',
-            backgroundColor: '#131211',
-            color: '#DBC8BB',
+            backgroundColor: '#9EA9A2',
+            color: '#9B806E',
             align: 'right',
             padding: {
                 top: 5,
@@ -28,6 +28,7 @@ class Menu extends Phaser.Scene {
         // show menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Frog Meeper', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize +  borderPadding, '<- for easy -> for hard', menuConfig).setOrigin(0.5);
         
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -39,6 +40,7 @@ class Menu extends Phaser.Scene {
           // Novice mode
           game.settings = {
             spaceshipSpeed: 3,
+            turtleSpeed: 5,
             gameTimer: 60000    
           }
           this.sound.play('sfx_select');
@@ -48,6 +50,7 @@ class Menu extends Phaser.Scene {
           // Expert mode
           game.settings = {
             spaceshipSpeed: 4,
+            turtleSpeed: 9,
             gameTimer: 45000    
           }
           this.sound.play('sfx_select');

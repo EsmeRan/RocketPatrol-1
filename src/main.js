@@ -2,6 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     width: 640,
     height: 480,
+    backgroundColor: '#9EA9A2',
     scene: [ Menu, Play ]
 }
 
@@ -18,3 +19,4 @@ let keyF, keyR, keyLEFT, keyRIGHT;
 game.highScore = 0;
 
 // font help from https://www.webtips.dev/webtips/phaser/custom-fonts-in-phaser3
+// backgroundColor from https://stackoverflow.com/questions/59332460/how-to-set-background-color-of-phaser-3-game-during-runtime
