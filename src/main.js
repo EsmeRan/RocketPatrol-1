@@ -1,3 +1,9 @@
+// Esmeralda Rangel
+// forked from Nathan Altice
+// 4/18/2022
+// ~ 10 hours
+
+
 let config = {
     type: Phaser.CANVAS,
     width: 640,
