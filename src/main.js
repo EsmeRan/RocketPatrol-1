@@ -3,6 +3,10 @@
 // 4/18/2022
 // ~ 10 hours
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f287b2861d317d2857baf58fb7f4f2b55f29dfcf
 let config = {
     type: Phaser.CANVAS,
     width: 640,
